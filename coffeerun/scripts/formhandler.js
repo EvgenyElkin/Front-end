@@ -14,17 +14,30 @@
     }
   }
 
-  FormHandler.prototype.addSubmitHandler = function (submitCallback) {
+  FormHandler.prototype.addSubmitHandler = function(submitCallback) {
     this.$formElement.on("submit", function(event) {
       event.preventDefault();
 
       var data = {};
-      $(this).serializeArray().forEach(function (item) {
+      $(this).serializeArray().forEach(function(item) {
         data[item.name] = item.value;
       });
       submitCallback(data);
       this.reset();
       this.elements[0].focus();
+    });
+  }
+
+  FormHandler.prototype.addInputHandler = function(inputCallback) {
+    this.$formElement.on('input', '[name=email]', function(event) {
+      var email = event.target.value;
+      var message = '';
+      if (inputCallback(email)) {
+        event.target.setCustomValidity('');
+      } else {
+        message = email + ' is not an authorized email address!'
+        event.target.setCustomValidity(message);
+      }
     });
   }
 

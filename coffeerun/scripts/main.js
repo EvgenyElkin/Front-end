@@ -8,6 +8,7 @@
   var DataStore = App.DataStore;
   var FormHandler = App.FormHandler;
   var CheckList = App.CheckList;
+  var Validation = App.Validation;
 
   var truck = new Truck("NCC-1701", new DataStore());
   var formHandler = new FormHandler(FORM_SELECTOR);
@@ -18,6 +19,6 @@
     checklist.addRow.call(checklist, data);
   });
   checklist.addClickHandler(truck.deliverOrder.bind(truck));
-
+  formHandler.addInputHandler(Validation.isCompanyEmail);
   window.truck = truck;
 })(window);
