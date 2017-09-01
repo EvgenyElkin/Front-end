@@ -2,31 +2,20 @@ import Ember from 'ember';
 
 export default Ember.Route.extend({
   model() {
-    return [{
-        id: 1,
-        location: 'Asilomar',
-        sightedAt: new Date('2016-03-07')
-      },
-      {
-        id: 2,
-        location: 'Asilomar',
-        sightedAt: new Date('2016-03-07')
-      },
-      {
-        id: 3,
-        location: 'Asilomar',
-        sightedAt: new Date('2016-03-07')
-      },
-      {
-        id: 4,
-        location: 'Asilomar',
-        sightedAt: new Date('2016-03-07')
-      },
-      {
-        id: 5,
-        location: 'Asilomar',
-        sightedAt: new Date('2016-03-07')
-      }
-    ]
+    let record1 = this.store.createRecord('sighting', {
+      location: 'Atlanta',
+      sightedAt: new Date('2016-02-09')
+    });
+    record1.set('location', 'paris');
+    console.log('Record 1 location:' + record1.get('location'));
+    let record2 = this.store.createRecord('sighting', {
+      location: 'Atlanta',
+      sightedAt: new Date('2016-02-09')
+    });
+    let record3 = this.store.createRecord('sighting', {
+      location: 'Atlanta',
+      sightedAt: new Date('2016-02-09')
+    });
+    return [record1, record2, record3];
   }
 });
