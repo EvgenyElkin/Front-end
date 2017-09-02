@@ -16,5 +16,6 @@ module.exports = function(defaults) {
   });
 
   app.import(bootstrapPath + 'javascripts/bootstrap.js');
+  app.import('bower_components/moment/moment.js');
   return app.toTree();
 };
